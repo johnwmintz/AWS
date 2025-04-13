@@ -1,5 +1,5 @@
-#This is m process of creating an s3 bucket using cloud formation.
-#4/13/25o
+#This is a process of creating an s3 bucket using cloud formation.
+#4/13/25
 # X.com  @johnwmintz
 
 AWSTemplateFormatVersion: "2010-09-09" 
