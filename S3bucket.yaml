@@ -1,6 +1,36 @@
 #This is a process of creating an s3 bucket using cloud formation.
 #4/13/25
 # X.com  @johnwmintz
+#This is an example of a yaml file I ound online to practice with.  
 
 AWSTemplateFormatVersion: "2010-09-09" 
 Description: Simple cloud formation for s3 bucket creation and configuration
+
+Parameters: 
+BucketName: { Type: String, Default: "johnwmintz22334" } 
+ 
+Resources:  
+AccessLogBucket: 
+Type: "AWS::S3::Bucket" 
+Properties: 
+AccessControl: LogDeliveryWrite 
+ 
+MainBucket: 
+Type: "AWS::S3::Bucket" 
+Properties: 
+BucketName: !Ref BucketName 
+BucketEncryption: 
+ServerSideEncryptionConfiguration: 
+- ServerSideEncryptionByDefault: 
+SSEAlgorithm: AES256 
+LoggingConfiguration: 
+DestinationBucketName: !Ref AccessLogBucket 
+ 
+ 
+Outputs: 
+MainBucketName: 
+Description: Name of the main bucket 
+Value: !Ref MainBucket 
+LogBucketName: 
+Description: Name of the access log bucket 
+Value: !Ref AccessLogBucket
